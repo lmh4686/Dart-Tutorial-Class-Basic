@@ -27,8 +27,22 @@ void main(List<String> arguments) {
   final person = Person(firstName: 'Jihyuk', lastName: 'Lee', email: 'dean@example.com');
   print(person.email);
 
+  final person2 = Person(firstName: 'ff', lastName: 'dfs', email: 'ff');
+  print('P2 email: ${person2.email}');
+  person2.email = 'dfs@dsf.com';
+  print('P2 email: ${person2.email}');
+
   final admin = Admin(specialAdminField: 3.22, firstName: 'firstName', lastName: 'lastName');
-  final user = admin as User;
+  final user = admin as User2;
+  //Still printing from Admin property
+  print(user.fullName);
+  //And this will get error
+  // user.specialAdminField;
+
+  //But inside of the if statement, will work
+  if (user is Admin) {
+    user.specialAdminField;
+  }
 }
 
 class User {
